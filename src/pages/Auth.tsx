@@ -30,9 +30,16 @@ export default function Auth() {
 
     if (error) {
       toast({ title: "Lỗi", description: error.message, variant: "destructive" });
-    } else if (!isLogin) {
-      toast({ title: "Thành công!", description: "Kiểm tra email để xác nhận tài khoản." });
     } else {
+      if (!isLogin) {
+        toast({ title: "Đăng ký thành công!", description: "Đang đăng nhập..." });
+        // Auto sign in after signup
+        const { error: signInError } = await signIn(email, password);
+        if (signInError) {
+          toast({ title: "Lỗi đăng nhập", description: signInError.message, variant: "destructive" });
+          return;
+        }
+      }
       navigate("/");
     }
   };

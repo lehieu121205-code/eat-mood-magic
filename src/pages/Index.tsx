@@ -13,6 +13,7 @@ export default function Index() {
   const [chips, setChips] = useState<string[]>([]);
   const [mood, setMood] = useState<string | null>(null);
   const [aiResult, setAiResult] = useState<string | null>(null);
+  const [prevMood, setPrevMood] = useState<string | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
 
   const filtered = useMemo(() => {
