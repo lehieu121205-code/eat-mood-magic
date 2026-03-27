@@ -88,7 +88,10 @@ export default function Index() {
           <h2 className="text-center text-xl font-bold text-foreground mb-4">
             Bạn đang cảm thấy thế nào?
           </h2>
-          <MoodFilter selected={mood} onSelect={setMood} />
+          <MoodFilter selected={mood} onSelect={(m) => {
+            setMood(m);
+            if (!m) setAiResult(null);
+          }} />
         </div>
 
         {/* AI Suggest */}
