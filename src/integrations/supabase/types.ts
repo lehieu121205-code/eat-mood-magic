@@ -41,6 +41,30 @@ export type Database = {
         }
         Relationships: []
       }
+      search_history: {
+        Row: {
+          created_at: string
+          id: string
+          result_recipes: string[]
+          search_terms: string[]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          result_recipes?: string[]
+          search_terms: string[]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          result_recipes?: string[]
+          search_terms?: string[]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
