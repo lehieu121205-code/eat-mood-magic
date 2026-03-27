@@ -13,6 +13,7 @@ export default function Index() {
   const [chips, setChips] = useState<string[]>([]);
   const [mood, setMood] = useState<string | null>(null);
   const [aiResult, setAiResult] = useState<string | null>(null);
+  const [prevMood, setPrevMood] = useState<string | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
 
   const filtered = useMemo(() => {
@@ -87,7 +88,10 @@ export default function Index() {
           <h2 className="text-center text-xl font-bold text-foreground mb-4">
             Bạn đang cảm thấy thế nào?
           </h2>
-          <MoodFilter selected={mood} onSelect={setMood} />
+          <MoodFilter selected={mood} onSelect={(m) => {
+            setMood(m);
+            if (!m) setAiResult(null);
+          }} />
         </div>
 
         {/* AI Suggest */}
