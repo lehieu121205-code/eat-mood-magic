@@ -9,9 +9,28 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { messages } = await req.json();
+    const { messages, mode, recipeOptions } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
+
+    const systemPrompt = `Bạn là trợ lý nấu ăn AI thông minh, chuyên về ẩm thực Việt Nam. Bạn có thể:
+- Gợi ý món ăn dựa trên nguyên liệu có sẵn
+- Gợi ý món phù hợp với tâm trạng/cảm xúc
+- Chia sẻ công thức nấu ăn chi tiết
+- Nhận diện nguyên liệu từ ảnh và gợi ý món
+- Đưa ra mẹo nấu ăn hữu ích
+
+Trả lời bằng tiếng Việt, thân thiện và chi tiết. Sử dụng emoji phù hợp.`;
+
+    const recipeSuggestionPrompt =
+      mode === "recipe_suggestions" && Array.isArray(recipeOptions) && recipeOptions.length > 0
+        ? `\n\nBạn đang ở chế độ gợi ý món từ danh sách có sẵn. Chỉ được chọn đúng 3 món từ danh sách sau, tuyệt đối không tự tạo món mới:\n${recipeOptions
+            .map(
+              (recipe: { title: string; description: string }, index: number) =>
+                `${index + 1}. ${recipe.title}: ${recipe.description}`
+            )
+            .join("\n")}\n\nHãy trả lời theo dạng markdown đánh số 1, 2, 3. Mỗi món gồm: tên món in đậm, mô tả ngắn, lý do phù hợp. Không đưa nguyên liệu hay cách nấu vì giao diện sẽ hiển thị sau khi người dùng chọn món.`
+        : "";
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -24,14 +43,7 @@ serve(async (req) => {
         messages: [
           {
             role: "system",
-            content: `Bạn là trợ lý nấu ăn AI thông minh, chuyên về ẩm thực Việt Nam. Bạn có thể:
-- Gợi ý món ăn dựa trên nguyên liệu có sẵn
-- Gợi ý món phù hợp với tâm trạng/cảm xúc
-- Chia sẻ công thức nấu ăn chi tiết
-- Nhận diện nguyên liệu từ ảnh và gợi ý món
-- Đưa ra mẹo nấu ăn hữu ích
-
-Trả lời bằng tiếng Việt, thân thiện và chi tiết. Sử dụng emoji phù hợp.`,
+            content: `${systemPrompt}${recipeSuggestionPrompt}`,
           },
           ...messages,
         ],
