@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
-import { LogOut, Heart, ChefHat, Search, Clock, Home, ChevronLeft, ChevronRight } from "lucide-react";
+import { LogOut, Heart, ChefHat, Search, Clock, Home, ChevronLeft, ChevronRight, User, UtensilsCrossed, RefreshCw, Carrot } from "lucide-react";
 
 export default function Sidebar() {
-  const { user, signOut } = useAuth();
+  const { user, isAdmin, signOut } = useAuth();
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
 
@@ -14,8 +14,15 @@ export default function Sidebar() {
   const menuItems = [
     { icon: Home, label: "Trang chủ", path: "/", always: true },
     { icon: Search, label: "Tìm nguyên liệu", path: "/search", always: true },
-    { icon: Clock, label: "Lịch sử tìm kiếm", path: "/history", always: false },
-    { icon: Heart, label: "Món đã lưu", path: "/saved", always: false },
+    { icon: Clock, label: "Lịch sử tìm kiếm", path: "/history", requireAuth: true },
+    { icon: Heart, label: "Món đã lưu", path: "/saved", requireAuth: true },
+    { icon: User, label: "Trang cá nhân", path: "/profile", requireAuth: true },
+  ];
+
+  const adminItems = [
+    { icon: UtensilsCrossed, label: "Quản lý món ăn", path: "/admin/recipes" },
+    { icon: RefreshCw, label: "Cập nhật món", path: "/admin/recipe-edit" },
+    { icon: Carrot, label: "Quản lý nguyên liệu", path: "/admin/ingredients" },
   ];
 
   return (
@@ -39,9 +46,9 @@ export default function Sidebar() {
       </div>
 
       {/* Nav items */}
-      <nav className="flex-1 py-3 px-2 space-y-1">
+      <nav className="flex-1 py-3 px-2 space-y-1 overflow-y-auto">
         {menuItems.map((item) => {
-          if (!item.always && !user) return null;
+          if (item.requireAuth && !user) return null;
           const active = isActive(item.path);
           return (
             <Link key={item.path} to={item.path}>
@@ -56,6 +63,35 @@ export default function Sidebar() {
             </Link>
           );
         })}
+
+        {/* Admin section */}
+        {isAdmin && (
+          <>
+            <div className={`pt-4 pb-1 ${collapsed ? "px-2" : "px-4"}`}>
+              {!collapsed && (
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  Quản trị
+                </p>
+              )}
+              {collapsed && <div className="border-t border-border" />}
+            </div>
+            {adminItems.map((item) => {
+              const active = isActive(item.path);
+              return (
+                <Link key={item.path} to={item.path}>
+                  <Button
+                    variant={active ? "default" : "ghost"}
+                    className={`w-full justify-start gap-3 ${collapsed ? "px-3" : "px-4"}`}
+                    size="sm"
+                  >
+                    <item.icon className="w-4 h-4 shrink-0" />
+                    {!collapsed && <span>{item.label}</span>}
+                  </Button>
+                </Link>
+              );
+            })}
+          </>
+        )}
       </nav>
 
       {/* Bottom: user info */}
