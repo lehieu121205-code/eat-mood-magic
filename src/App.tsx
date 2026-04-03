@@ -13,6 +13,10 @@ import SavedRecipes from "./pages/SavedRecipes";
 import SearchPage from "./pages/SearchPage";
 import HistoryPage from "./pages/HistoryPage";
 import Auth from "./pages/Auth";
+import ProfilePage from "./pages/ProfilePage";
+import AdminRecipesPage from "./pages/AdminRecipesPage";
+import AdminRecipeEditPage from "./pages/AdminRecipeEditPage";
+import AdminIngredientsPage from "./pages/AdminIngredientsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +40,10 @@ const App = () => (
                   <Route path="/search" element={<SearchPage />} />
                   <Route path="/history" element={<HistoryPage />} />
                   <Route path="/auth" element={<Auth />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/admin/recipes" element={<AdminRecipesPage />} />
+                  <Route path="/admin/recipe-edit" element={<AdminRecipeEditPage />} />
+                  <Route path="/admin/ingredients" element={<AdminIngredientsPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
