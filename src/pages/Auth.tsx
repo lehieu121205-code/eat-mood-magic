@@ -49,7 +49,7 @@ export default function Auth() {
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
         <Card className="w-full max-w-md border-0 shadow-xl">
           <CardHeader className="text-center">
-            <div className="text-4xl mb-2">🍳</div>
+            
             <CardTitle className="text-2xl font-black">{isLogin ? "Đăng nhập" : "Đăng ký"}</CardTitle>
           </CardHeader>
           <CardContent>
