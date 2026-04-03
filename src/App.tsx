@@ -19,7 +19,7 @@ import AdminRecipeEditPage from "./pages/AdminRecipeEditPage";
 import AdminIngredientsPage from "./pages/AdminIngredientsPage";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
