@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
-import { LogOut, Heart, ChefHat, Search, Clock, Home, ChevronLeft, ChevronRight, User, UtensilsCrossed, RefreshCw, Carrot } from "lucide-react";
+import { LogOut, Heart, ChefHat, Search, Clock, Home, ChevronLeft, ChevronRight, User, UtensilsCrossed, Star, Carrot } from "lucide-react";
 
 export default function Sidebar() {
   const { user, isAdmin, signOut } = useAuth();
