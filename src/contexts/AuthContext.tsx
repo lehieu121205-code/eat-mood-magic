@@ -43,13 +43,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setProfile(profileData as Profile | null);
 
     // Load role
-    const { data: roleData, error: roleError } = await supabase
+    const { data: roleData } = await supabase
       .from("user_roles")
       .select("role")
       .eq("user_id", userId)
       .eq("role", "admin")
       .maybeSingle();
-    console.log("Role check for", userId, ":", roleData, roleError);
     setIsAdmin(!!roleData);
   };
 
