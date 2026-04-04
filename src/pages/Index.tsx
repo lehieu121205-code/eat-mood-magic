@@ -136,7 +136,7 @@ export default function Index() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-black text-primary"
           >
-            🍳 Cooking Instructions
+            Cooking Instructions
           </motion.h1>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Nhập nguyên liệu sẵn có, chọn tâm trạng — AI sẽ gợi ý món ngon phù hợp nhất!
