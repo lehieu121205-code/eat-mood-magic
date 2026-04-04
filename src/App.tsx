@@ -42,7 +42,7 @@ const App = () => (
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/admin/recipes" element={<AdminRecipesPage />} />
-                  <Route path="/admin/recipe-edit" element={<AdminRecipeEditPage />} />
+                  <Route path="/admin/reviews" element={<AdminReviewsPage />} />
                   <Route path="/admin/ingredients" element={<AdminIngredientsPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>

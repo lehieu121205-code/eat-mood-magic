@@ -21,7 +21,7 @@ export default function Sidebar() {
 
   const adminItems = [
     { icon: UtensilsCrossed, label: "Quản lý món ăn", path: "/admin/recipes" },
-    { icon: RefreshCw, label: "Cập nhật món", path: "/admin/recipe-edit" },
+    { icon: Star, label: "Quản lý đánh giá", path: "/admin/reviews" },
     { icon: Carrot, label: "Quản lý nguyên liệu", path: "/admin/ingredients" },
   ];
 

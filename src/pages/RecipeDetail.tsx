@@ -98,6 +98,9 @@ export default function RecipeDetail() {
           ))}
         </ol>
       </div>
+
+      {/* Reviews */}
+      <RecipeReviews recipeId={recipe.id} />
     </motion.div>
   );
 }

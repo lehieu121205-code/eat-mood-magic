@@ -159,7 +159,7 @@ export default function Index() {
 
         {/* AI Suggest */}
         <div className="bg-gradient-to-br from-primary/5 to-secondary/10 rounded-3xl p-8 mb-12 text-center shadow-sm border border-primary/10">
-          <h2 className="text-2xl font-black text-primary mb-2">🤖 Gợi ý của AI</h2>
+          <h2 className="text-2xl font-black text-primary mb-2">Gợi ý của AI</h2>
           <p className="text-muted-foreground mb-5">
             AI sẽ đề xuất món ăn phù hợp dựa trên nguyên liệu và tâm trạng của bạn
           </p>
