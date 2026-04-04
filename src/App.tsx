@@ -15,7 +15,7 @@ import HistoryPage from "./pages/HistoryPage";
 import Auth from "./pages/Auth";
 import ProfilePage from "./pages/ProfilePage";
 import AdminRecipesPage from "./pages/AdminRecipesPage";
-import AdminRecipeEditPage from "./pages/AdminRecipeEditPage";
+import AdminReviewsPage from "./pages/AdminReviewsPage";
 import AdminIngredientsPage from "./pages/AdminIngredientsPage";
 import NotFound from "./pages/NotFound";
 
@@ -42,7 +42,7 @@ const App = () => (
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/admin/recipes" element={<AdminRecipesPage />} />
-                  <Route path="/admin/recipe-edit" element={<AdminRecipeEditPage />} />
+                  <Route path="/admin/reviews" element={<AdminReviewsPage />} />
                   <Route path="/admin/ingredients" element={<AdminIngredientsPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>

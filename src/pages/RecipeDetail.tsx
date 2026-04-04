@@ -6,6 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import RecipeReviews from "@/components/RecipeReviews";
 
 export default function RecipeDetail() {
   const { id } = useParams();
@@ -97,6 +98,9 @@ export default function RecipeDetail() {
           ))}
         </ol>
       </div>
+
+      {/* Reviews */}
+      <RecipeReviews recipeId={recipe.id} />
     </motion.div>
   );
 }
