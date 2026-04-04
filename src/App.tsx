@@ -15,7 +15,7 @@ import HistoryPage from "./pages/HistoryPage";
 import Auth from "./pages/Auth";
 import ProfilePage from "./pages/ProfilePage";
 import AdminRecipesPage from "./pages/AdminRecipesPage";
-import AdminRecipeEditPage from "./pages/AdminRecipeEditPage";
+import AdminReviewsPage from "./pages/AdminReviewsPage";
 import AdminIngredientsPage from "./pages/AdminIngredientsPage";
 import NotFound from "./pages/NotFound";
 
