@@ -50,7 +50,7 @@ export default function SavedRecipes() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-black text-foreground mb-8">❤️ Món đã lưu</h1>
+      <h1 className="text-3xl font-black text-foreground mb-8">Món đã lưu</h1>
       {saved.length === 0 ? (
         <div className="text-center py-16 text-muted-foreground">
           <p className="text-lg mb-4">Chưa có món nào được lưu.</p>
