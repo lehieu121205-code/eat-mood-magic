@@ -99,7 +99,6 @@ export default function AIChatBot() {
         <div className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[520px] bg-card rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-primary text-primary-foreground px-4 py-3 flex items-center gap-2">
-            <span className="text-xl">🤖</span>
             <div>
               <h3 className="font-bold text-sm">Trợ lý Nấu ăn AI</h3>
               <p className="text-xs opacity-80">Hỏi gì về nấu ăn cũng được!</p>

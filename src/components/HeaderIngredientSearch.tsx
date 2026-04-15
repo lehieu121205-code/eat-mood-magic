@@ -62,7 +62,7 @@ export default function HeaderIngredientSearch({ onClose }: Props) {
 
   return (
     <div className="p-4 space-y-4">
-      <h3 className="font-bold text-foreground text-lg">🔍 Tìm kiếm theo nguyên liệu</h3>
+      <h3 className="font-bold text-foreground text-lg">Tìm kiếm theo nguyên liệu</h3>
 
       {/* Chip input */}
       <div className="flex items-center gap-2 flex-wrap bg-background border border-border rounded-xl p-3">

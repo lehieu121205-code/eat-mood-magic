@@ -52,7 +52,7 @@ export default function SearchPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10 space-y-6">
-      <h1 className="text-3xl font-black text-foreground">🔍 Tìm kiếm theo nguyên liệu</h1>
+      <h1 className="text-3xl font-black text-foreground">Tìm kiếm theo nguyên liệu</h1>
       <p className="text-muted-foreground">Nhập các nguyên liệu bạn có, hệ thống sẽ đề xuất món ăn phù hợp.</p>
 
       {/* Chip input */}
